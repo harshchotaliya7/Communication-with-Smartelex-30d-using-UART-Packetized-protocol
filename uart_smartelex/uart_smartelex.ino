@@ -7,11 +7,11 @@
 
 
 /*
-Used Library : Serial 
+* Used Library : Serial 
 */
 
 /*
-Function for Communication with Smartelex 30d using UART Packetized protocol
+* Function for Communication with Smartelex 30d using UART Packetized protocol
 */
 
 /* 
@@ -40,7 +40,7 @@ void control_motor_speed(bool dir1,bool dir2,bool motor_no1,bool motor_no2,int s
     Serial1.write('*');
     
     // Motor direction & ON/OFF configuration
-    data_send=(8*motor_no1+2*motor_no2+dir1*4+dir2*1);
+    data_send=(8*motor_no1+2*motor_no2+4*dir1+1*dir2);
     Serial1.write(data_send);
 
     //Motor 1 Speed
@@ -55,10 +55,8 @@ void control_motor_speed(bool dir1,bool dir2,bool motor_no1,bool motor_no2,int s
 }
 void setup() 
 {
-
   // Select Baudrate as per your need 
   Serial1.begin(57600);
-
 }
 
 void loop() 
